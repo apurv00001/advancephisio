@@ -1,26 +1,30 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
+import treatmentJoint from '@/assets/treatment-joint.jpg';
+import treatmentSpine from '@/assets/treatment-spine.jpg';
+import treatmentNeural from '@/assets/treatment-neural.jpg';
+import treatmentCerebral from '@/assets/treatment-cerebral.jpg';
 
 const treatments = [
   {
     name: 'Joint Logic',
     description: 'Restoring mechanical function to impact-stressed joints.',
-    icon: '◆',
+    image: treatmentJoint,
   },
   {
     name: 'Spinal Core',
     description: 'Realignment of vertebral column and whiplash mitigation.',
-    icon: '◆',
+    image: treatmentSpine,
   },
   {
     name: 'Neural Net',
     description: 'Decompression therapy for nerve signal obstruction.',
-    icon: '◆',
+    image: treatmentNeural,
   },
   {
     name: 'Cerebral',
     description: 'Concussion monitoring and cognitive recalibration.',
-    icon: '◆',
+    image: treatmentCerebral,
   },
 ];
 
@@ -62,16 +66,16 @@ export function Treatments() {
               `}
             >
               <div className={`
-                aspect-square bg-muted relative overflow-hidden
+                aspect-square relative overflow-hidden
                 ${theme === 'organic' ? 'rounded-t-3xl' : ''}
                 ${theme === 'futuristic' ? 'rounded-t-xl' : ''}
               `}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 border border-muted-foreground/30 rounded-full flex items-center justify-center">
-                    <span className="text-muted-foreground text-2xl">{treatment.icon}</span>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                <img 
+                  src={treatment.image} 
+                  alt={treatment.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
               </div>
 
               <div className="p-6">

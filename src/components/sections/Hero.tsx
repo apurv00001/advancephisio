@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
+import heroImage from '@/assets/hero-accident.jpg';
 
 export function Hero() {
   const { theme } = useTheme();
@@ -83,20 +84,22 @@ export function Hero() {
             transition={{ delay: 0.5 }}
             className="relative"
           >
-            <div className="aspect-[4/3] bg-card rounded-lg border border-border overflow-hidden relative">
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 border-2 border-current rounded-full flex items-center justify-center">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm uppercase tracking-wider">Trauma Recovery Visualization</p>
-                </div>
-              </div>
+            <div className={`
+              aspect-[4/3] rounded-lg border border-border overflow-hidden relative
+              ${theme === 'organic' ? 'rounded-3xl shadow-2xl' : ''}
+              ${theme === 'futuristic' ? 'rounded-2xl' : ''}
+              ${theme === 'artdeco' ? 'border-2 border-primary/30' : ''}
+            `}>
+              <img 
+                src={heroImage} 
+                alt="Trauma recovery visualization" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              
               {/* Scan line effect for brutalist theme */}
               {theme === 'brutalist' && (
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
                   <div className="w-full h-1 bg-primary/30 animate-scan-line" />
                 </div>
               )}

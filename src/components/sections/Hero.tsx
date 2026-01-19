@@ -5,6 +5,8 @@ import heroImage from '@/assets/hero-accident.jpg';
 export function Hero() {
   const { theme } = useTheme();
 
+  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance'].includes(theme);
+
   return (
     <section className="min-h-screen pt-24 pb-16 relative overflow-hidden">
       {/* Background decorations based on theme */}
@@ -40,6 +42,33 @@ export function Hero() {
         </div>
       )}
 
+      {theme === 'cyberpunk' && (
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-50" />
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[80px]" />
+          <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-accent/20 rounded-full blur-[80px]" />
+        </div>
+      )}
+
+      {theme === 'synthwave' && (
+        <div className="absolute inset-0">
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-primary/20 via-accent/10 to-transparent" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[100px]" />
+        </div>
+      )}
+
+      {theme === 'nordic' && (
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-1/3 -right-1/4 w-[700px] h-[700px] bg-primary/5 rounded-full blur-3xl" />
+        </div>
+      )}
+
+      {theme === 'darkelegance' && (
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+        </div>
+      )}
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +90,7 @@ export function Hero() {
             <h1 className="text-5xl md:text-7xl font-heading font-bold leading-tight mb-6">
               <span className="text-foreground">Advanced</span>
               <br />
-              <span className="text-primary text-glow">Trauma Recovery.</span>
+              <span className={`text-primary ${isDarkTheme ? 'text-glow' : ''}`}>Trauma Recovery.</span>
             </h1>
 
             <p className="text-muted-foreground text-lg mb-8 max-w-lg">
@@ -70,7 +99,7 @@ export function Hero() {
             </p>
 
             <motion.button
-              className="px-8 py-4 bg-primary text-primary-foreground font-heading uppercase tracking-wider rounded-lg text-sm box-glow"
+              className={`px-8 py-4 bg-primary text-primary-foreground font-heading uppercase tracking-wider rounded-lg text-sm ${isDarkTheme ? 'box-glow' : 'shadow-lg hover:shadow-xl'} transition-shadow`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -89,6 +118,11 @@ export function Hero() {
               ${theme === 'organic' ? 'rounded-3xl shadow-2xl' : ''}
               ${theme === 'futuristic' ? 'rounded-2xl' : ''}
               ${theme === 'artdeco' ? 'border-2 border-primary/30' : ''}
+              ${theme === 'cyberpunk' ? 'border-primary/50' : ''}
+              ${theme === 'nordic' ? 'rounded-2xl shadow-xl' : ''}
+              ${theme === 'corporate' ? 'rounded-lg shadow-lg' : ''}
+              ${theme === 'synthwave' ? 'border-2 border-primary/40' : ''}
+              ${theme === 'darkelegance' ? 'rounded-lg border-accent/20' : ''}
             `}>
               <img 
                 src={heroImage} 
@@ -97,8 +131,8 @@ export function Hero() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               
-              {/* Scan line effect for brutalist theme */}
-              {theme === 'brutalist' && (
+              {/* Scan line effect for tech themes */}
+              {['brutalist', 'cyberpunk', 'synthwave'].includes(theme) && (
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
                   <div className="w-full h-1 bg-primary/30 animate-scan-line" />
                 </div>

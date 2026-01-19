@@ -31,6 +31,48 @@ const treatments = [
 export function Treatments() {
   const { theme } = useTheme();
 
+  const getCardStyles = () => {
+    switch (theme) {
+      case 'brutalist':
+        return 'border border-border hover:border-primary bg-card';
+      case 'organic':
+        return 'bg-card rounded-3xl shadow-md hover:shadow-xl transition-shadow';
+      case 'futuristic':
+        return 'glass rounded-xl hover:bg-primary/5 transition-colors';
+      case 'minimal':
+        return 'bg-card hover:bg-secondary transition-colors';
+      case 'artdeco':
+        return 'border-2 border-primary/20 hover:border-primary bg-card';
+      case 'cyberpunk':
+        return 'border border-primary/30 hover:border-primary bg-card hover:box-glow transition-all';
+      case 'nordic':
+        return 'bg-card rounded-2xl shadow-sm hover:shadow-lg transition-shadow';
+      case 'corporate':
+        return 'bg-card rounded-lg shadow-sm hover:shadow-md border border-border transition-shadow';
+      case 'synthwave':
+        return 'border-2 border-primary/30 hover:border-primary bg-card/80';
+      case 'darkelegance':
+        return 'bg-card rounded-lg border border-border hover:border-accent/40 transition-colors';
+      default:
+        return '';
+    }
+  };
+
+  const getImageRadius = () => {
+    switch (theme) {
+      case 'organic':
+        return 'rounded-t-3xl';
+      case 'futuristic':
+      case 'nordic':
+        return 'rounded-t-xl';
+      case 'corporate':
+      case 'darkelegance':
+        return 'rounded-t-lg';
+      default:
+        return '';
+    }
+  };
+
   return (
     <section className="py-24 bg-secondary/30">
       <div className="container mx-auto px-6">
@@ -56,20 +98,9 @@ export function Treatments() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`
-                group cursor-pointer overflow-hidden
-                ${theme === 'brutalist' ? 'border border-border hover:border-primary bg-card' : ''}
-                ${theme === 'organic' ? 'bg-card rounded-3xl shadow-md hover:shadow-xl transition-shadow' : ''}
-                ${theme === 'futuristic' ? 'glass rounded-xl hover:bg-primary/5 transition-colors' : ''}
-                ${theme === 'minimal' ? 'bg-card hover:bg-secondary transition-colors' : ''}
-                ${theme === 'artdeco' ? 'border-2 border-primary/20 hover:border-primary bg-card' : ''}
-              `}
+              className={`group cursor-pointer overflow-hidden ${getCardStyles()}`}
             >
-              <div className={`
-                aspect-square relative overflow-hidden
-                ${theme === 'organic' ? 'rounded-t-3xl' : ''}
-                ${theme === 'futuristic' ? 'rounded-t-xl' : ''}
-              `}>
+              <div className={`aspect-square relative overflow-hidden ${getImageRadius()}`}>
                 <img 
                   src={treatment.image} 
                   alt={treatment.name}

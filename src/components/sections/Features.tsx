@@ -12,6 +12,33 @@ const features = [
 export function Features() {
   const { theme } = useTheme();
 
+  const getCardStyles = () => {
+    switch (theme) {
+      case 'brutalist':
+        return 'border border-border hover:border-primary hover:box-glow';
+      case 'organic':
+        return 'bg-card hover:bg-primary/10 rounded-2xl shadow-sm';
+      case 'futuristic':
+        return 'glass hover:bg-primary/10';
+      case 'minimal':
+        return 'hover:bg-secondary border-b-2 border-transparent hover:border-foreground';
+      case 'artdeco':
+        return 'border border-primary/30 hover:border-primary bg-card';
+      case 'cyberpunk':
+        return 'border border-primary/40 hover:border-primary bg-card hover:box-glow';
+      case 'nordic':
+        return 'bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow';
+      case 'corporate':
+        return 'bg-card rounded-lg shadow-sm hover:shadow-md border border-border';
+      case 'synthwave':
+        return 'border border-primary/30 hover:border-primary bg-card/50 hover:bg-card';
+      case 'darkelegance':
+        return 'bg-card border border-border hover:border-accent/50 rounded-lg';
+      default:
+        return '';
+    }
+  };
+
   return (
     <section className="py-12 border-y border-border bg-card/50">
       <div className="container mx-auto px-6">
@@ -23,14 +50,7 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`
-                text-center p-6 rounded-lg transition-all cursor-pointer group
-                ${theme === 'brutalist' ? 'border border-border hover:border-primary hover:box-glow' : ''}
-                ${theme === 'organic' ? 'bg-card hover:bg-primary/10 rounded-2xl shadow-sm' : ''}
-                ${theme === 'futuristic' ? 'glass hover:bg-primary/10' : ''}
-                ${theme === 'minimal' ? 'hover:bg-secondary border-b-2 border-transparent hover:border-foreground' : ''}
-                ${theme === 'artdeco' ? 'border border-primary/30 hover:border-primary bg-card' : ''}
-              `}
+              className={`text-center p-6 rounded-lg transition-all cursor-pointer group ${getCardStyles()}`}
             >
               <feature.icon className="w-8 h-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
               <h3 className="font-heading text-sm uppercase tracking-wider text-foreground mb-1">

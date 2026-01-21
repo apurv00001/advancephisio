@@ -5,34 +5,34 @@ import { useEffect, useState, useRef } from 'react';
 
 const testimonials = [
   {
+    name: 'Verified Patient',
+    quote: 'After my accident, I didn\'t know where to turn. This team made recovery fast and stress-free.',
+    rating: 5,
+    treatment: 'MVA Recovery Program',
+  },
+  {
     name: 'Sarah M.',
     quote: 'After my car accident, I thought I would never recover. The team here gave me my life back. Incredible care and results!',
     rating: 5,
-    treatment: 'Spinal Rehabilitation',
+    treatment: 'Whiplash Treatment',
   },
   {
     name: 'James T.',
     quote: 'Professional, caring, and effective. My chronic pain is finally manageable thanks to their personalized treatment plan.',
     rating: 5,
-    treatment: 'Joint Therapy',
+    treatment: 'Back Injury Recovery',
   },
   {
     name: 'Maria L.',
-    quote: 'The concussion protocol here is world-class. I was back to work in half the time my doctor expected.',
+    quote: 'The insurance claim process was so stressful until they helped me. They handled everything so I could focus on healing.',
     rating: 5,
-    treatment: 'Concussion Recovery',
+    treatment: 'Full Recovery Program',
   },
   {
     name: 'David K.',
     quote: 'State-of-the-art facilities and a team that truly cares. I recommend them to everyone I know.',
     rating: 5,
-    treatment: 'Neural Therapy',
-  },
-  {
-    name: 'Emily R.',
-    quote: 'From the first consultation to my final session, every step was handled with expertise and compassion.',
-    rating: 5,
-    treatment: 'Full Recovery Program',
+    treatment: 'Spinal Rehabilitation',
   },
 ];
 
@@ -81,7 +81,7 @@ export function Testimonials() {
   const { count, ref: counterRef } = useCountUp(25000, 2500);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance'].includes(theme);
+  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance', 'executivenavy'].includes(theme);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -110,10 +110,12 @@ export function Testimonials() {
       case 'medicaltrust':
         return 'bg-card rounded-2xl shadow-md';
       case 'corporate':
+      case 'professionalblue':
         return 'bg-card rounded-lg shadow-sm border border-border';
       case 'synthwave':
         return 'border-2 border-primary/40 bg-card/90';
       case 'darkelegance':
+      case 'executivenavy':
         return 'bg-card rounded-lg border border-accent/20';
       case 'healthvitality':
         return 'bg-card rounded-2xl shadow-lg border border-primary/10';
@@ -137,10 +139,10 @@ export function Testimonials() {
             /// PATIENT SUCCESS
           </span>
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            What Our Patients Say
+            Trusted by Thousands
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Join thousands who have transformed their health with our expert care.
+            Join thousands who have recovered from motor vehicle accident injuries with our expert care.
           </p>
         </motion.div>
 
@@ -187,7 +189,7 @@ export function Testimonials() {
 
               <div className="border-t border-border pt-4">
                 <p className="font-heading font-semibold text-foreground">
-                  {testimonial.name}
+                  — {testimonial.name}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {testimonial.treatment}

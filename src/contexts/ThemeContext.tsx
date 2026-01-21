@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ThemeType = 'brutalist' | 'organic' | 'futuristic' | 'minimal' | 'artdeco' | 'cyberpunk' | 'nordic' | 'corporate' | 'synthwave' | 'darkelegance' | 'medicaltrust' | 'wellnessspa' | 'clinicalmodern' | 'healthvitality' | 'carewarmth';
+export type ThemeType = 'brutalist' | 'organic' | 'futuristic' | 'minimal' | 'artdeco' | 'cyberpunk' | 'nordic' | 'corporate' | 'synthwave' | 'darkelegance' | 'medicaltrust' | 'wellnessspa' | 'clinicalmodern' | 'healthvitality' | 'carewarmth' | 'executivenavy' | 'professionalblue';
 
 interface ThemeContextType {
   theme: ThemeType;
@@ -24,6 +24,8 @@ const themes = [
   { id: 'clinicalmodern' as ThemeType, name: 'Clinical Modern', description: 'Sharp, clean, efficient' },
   { id: 'healthvitality' as ThemeType, name: 'Health Vitality', description: 'Energetic orange, warm' },
   { id: 'carewarmth' as ThemeType, name: 'Care Warmth', description: 'Gentle rose, compassionate' },
+  { id: 'executivenavy' as ThemeType, name: 'Executive Navy', description: 'Dark navy, gold accent' },
+  { id: 'professionalblue' as ThemeType, name: 'Professional Blue', description: 'Corporate blue, teal accent' },
 ];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

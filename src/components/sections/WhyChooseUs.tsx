@@ -1,44 +1,44 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Users, Award, Heart, Building2, Clock, Shield } from 'lucide-react';
+import { AlertTriangle, TrendingDown, Activity, FileText, Clock, Users } from 'lucide-react';
 
-const reasons = [
+const delayRisks = [
   {
-    icon: Users,
-    title: 'Experienced Team',
-    description: 'Board-certified specialists with decades of combined expertise in trauma recovery.',
+    icon: AlertTriangle,
+    title: 'Persistent Pain',
+    description: 'Untreated injuries can develop into chronic pain conditions that are harder to resolve.',
   },
   {
-    icon: Award,
-    title: 'Proven Results',
-    description: 'Over 25,000 patients successfully treated with measurable improvement outcomes.',
+    icon: TrendingDown,
+    title: 'Restricted Movement',
+    description: 'Delayed treatment often leads to scar tissue formation and reduced range of motion.',
   },
   {
-    icon: Heart,
-    title: 'Personalized Care',
-    description: 'Customized treatment plans tailored to your unique condition and recovery goals.',
+    icon: Activity,
+    title: 'Compensatory Injuries',
+    description: 'Your body compensates for injuries, creating new problems in other areas.',
   },
   {
-    icon: Building2,
-    title: 'Modern Facilities',
-    description: 'State-of-the-art equipment and cutting-edge therapeutic technologies.',
+    icon: FileText,
+    title: 'Claim Processing Delays',
+    description: 'Late medical documentation can complicate your insurance claim process.',
   },
   {
     icon: Clock,
-    title: 'Flexible Scheduling',
-    description: 'Same-day appointments available with convenient hours to fit your schedule.',
+    title: '20+ Years Experience',
+    description: 'Our team specializes in MVA injuries with proven recovery outcomes.',
   },
   {
-    icon: Shield,
-    title: 'Insurance Friendly',
-    description: 'We work with all major insurance providers and offer affordable payment plans.',
+    icon: Users,
+    title: 'Full Support Team',
+    description: 'We handle your care and support your claim so you can focus on healing.',
   },
 ];
 
 export function WhyChooseUs() {
   const { theme } = useTheme();
 
-  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance'].includes(theme);
+  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance', 'executivenavy'].includes(theme);
 
   const getCardStyles = () => {
     switch (theme) {
@@ -93,25 +93,70 @@ export function WhyChooseUs() {
   return (
     <section id="why-us" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-6">
+        {/* What Happens After Injury */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="text-xs uppercase tracking-[0.3em] text-accent font-heading block mb-3">
-            /// WHY CHOOSE US
+            /// WHAT HAPPENS AFTER YOUR INJURY
           </span>
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Excellence in Patient Care
+            Why Early Treatment Matters
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            We combine cutting-edge treatments with compassionate care to deliver exceptional outcomes.
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            Motor vehicle collisions can cause strain, pain, and dysfunction in joints, muscles, spine, and nerves. 
+            Often pain doesn't begin immediately — symptoms may surface within 24–48 hours. 
+            Early physiotherapy not only reduces pain but prevents chronic complications and functional loss.
           </p>
         </motion.div>
 
+        {/* Warning Box */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className={`mb-16 p-6 md:p-8 border-2 border-accent/50 bg-accent/5 rounded-lg`}
+        >
+          <h3 className="text-xl font-heading font-bold text-foreground mb-4 flex items-center gap-2">
+            <AlertTriangle className="w-6 h-6 text-accent" />
+            Delaying treatment can lead to:
+          </h3>
+          <ul className="grid md:grid-cols-2 gap-3 text-muted-foreground">
+            <li className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full" />
+              Persistent pain
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full" />
+              Restricted movement
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full" />
+              Chronic compensatory injuries
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full" />
+              Delays in insurance claim processing
+            </li>
+          </ul>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h3 className="text-3xl font-heading font-bold text-foreground">
+            Why Choose Advance Physical Therapy
+          </h3>
+        </motion.div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => (
+          {delayRisks.map((reason, index) => (
             <motion.div
               key={reason.title}
               initial={{ opacity: 0, y: 30 }}
@@ -145,7 +190,7 @@ export function WhyChooseUs() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View Our Services
+            View Our Treatment Programs
           </motion.a>
         </motion.div>
       </div>

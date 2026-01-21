@@ -403,6 +403,58 @@
     --font-body: 'DM Sans', sans-serif;
   }
 
+  /* Theme 16: Executive Navy - Corporate Pro variant with darker navy */
+  :root[data-theme="executivenavy"] {
+    --background: 220 25% 10%;
+    --foreground: 0 0% 95%;
+    --card: 220 30% 14%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 30% 14%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 25% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 45 90% 55%;
+    --accent-foreground: 220 25% 10%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 25% 25%;
+    --input: 220 25% 18%;
+    --ring: 220 70% 50%;
+    --radius: 0.375rem;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  /* Theme 17: Professional Blue - Corporate Pro variant with teal accent */
+  :root[data-theme="professionalblue"] {
+    --background: 210 30% 98%;
+    --foreground: 220 35% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 35% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 35% 18%;
+    --primary: 220 65% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 220 35% 18%;
+    --muted: 210 15% 95%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 175 65% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 88%;
+    --input: 210 15% 95%;
+    --ring: 220 65% 40%;
+    --radius: 0.5rem;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
   /* Default to brutalist */
   :root {
     --background: 200 15% 8%;

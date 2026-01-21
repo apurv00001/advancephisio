@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 import heroImage from '@/assets/hero-accident.jpg';
 
 export function Hero() {
   const { theme } = useTheme();
 
-  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance'].includes(theme);
+  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance', 'executivenavy'].includes(theme);
 
   return (
     <section id="hero" className="min-h-screen pt-24 pb-16 relative overflow-hidden flex items-center">
@@ -14,7 +14,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
-          alt="Healthcare background" 
+          alt="Motor Vehicle Accident Recovery" 
           className="w-full h-full object-cover"
         />
         <div className={`absolute inset-0 ${
@@ -51,7 +51,7 @@ export function Hero() {
           className="inline-block mb-4"
         >
           <span className="text-xs uppercase tracking-[0.3em] text-accent font-heading">
-            + ADVANCED HEALTHCARE SOLUTIONS
+            + MOTOR VEHICLE ACCIDENT REHABILITATION
           </span>
         </motion.div>
 
@@ -61,15 +61,17 @@ export function Hero() {
           transition={{ delay: 0.3 }}
           className="max-w-3xl"
         >
-          <h1 className="text-5xl md:text-7xl font-heading font-bold leading-tight mb-6">
-            <span className="text-foreground">Transform Your</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold leading-tight mb-6">
+            <span className="text-foreground">Injured in a Motor Vehicle Accident?</span>
             <br />
-            <span className={`text-primary ${isDarkTheme ? 'text-glow' : ''}`}>Health With Expert Care.</span>
+            <span className={`text-primary ${isDarkTheme ? 'text-glow' : ''}`}>Get Fast, Effective Recovery.</span>
           </h1>
 
-          <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-xl">
-            Discover personalized treatments that have helped over 25,000 patients 
-            regain their well-being. Your journey to recovery starts here.
+          <p className="text-muted-foreground text-lg md:text-xl mb-4 max-w-xl">
+            Expert physiotherapy for MVA injuries. No referral needed.
+          </p>
+          <p className="text-accent font-medium text-lg mb-8 max-w-xl">
+            Insurance support and claim help available.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -79,15 +81,16 @@ export function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Book Appointment
+              Book Your Appointment
             </motion.a>
             <motion.a
-              href="#why-us"
-              className="px-8 py-4 border border-border text-foreground font-heading uppercase tracking-wider rounded-lg text-sm hover:bg-secondary transition-colors text-center"
+              href="tel:+1234567890"
+              className="px-8 py-4 border border-border text-foreground font-heading uppercase tracking-wider rounded-lg text-sm hover:bg-secondary transition-colors text-center flex items-center justify-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Learn More
+              <Phone className="w-4 h-4" />
+              Call Now for Same-Day Availability
             </motion.a>
           </div>
         </motion.div>

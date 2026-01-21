@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useState } from 'react';
-import { Send, Shield, CheckCircle } from 'lucide-react';
+import { Send, Shield, CheckCircle, Phone } from 'lucide-react';
 
 export function ContactForm() {
   const { theme } = useTheme();
@@ -10,10 +10,11 @@ export function ContactForm() {
     name: '',
     email: '',
     phone: '',
+    injuryType: '',
     message: '',
   });
 
-  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance'].includes(theme);
+  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance', 'executivenavy'].includes(theme);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export function ContactForm() {
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', injuryType: '', message: '' });
     }, 3000);
   };
 
@@ -44,6 +45,9 @@ export function ContactForm() {
       case 'medicaltrust':
         return `${base} rounded-xl`;
       case 'corporate':
+      case 'professionalblue':
+        return `${base} rounded-md`;
+      case 'executivenavy':
         return `${base} rounded-md`;
       case 'healthvitality':
         return `${base} rounded-xl`;
@@ -72,6 +76,8 @@ export function ContactForm() {
       case 'nordic':
       case 'medicaltrust':
         return `${base} rounded-xl hover:shadow-md`;
+      case 'executivenavy':
+        return `${base} rounded-md ${isDarkTheme ? 'box-glow' : ''}`;
       case 'healthvitality':
         return `${base} rounded-xl hover:shadow-lg`;
       default:
@@ -99,10 +105,12 @@ export function ContactForm() {
       case 'medicaltrust':
         return 'bg-card rounded-2xl shadow-lg';
       case 'corporate':
+      case 'professionalblue':
         return 'bg-card rounded-lg shadow-md border border-border';
       case 'synthwave':
         return 'border-2 border-primary/40 bg-card/90';
       case 'darkelegance':
+      case 'executivenavy':
         return 'bg-card rounded-lg border border-accent/20';
       case 'healthvitality':
         return 'bg-card rounded-2xl shadow-xl';
@@ -124,14 +132,32 @@ export function ContactForm() {
             className="text-center mb-12"
           >
             <span className="text-xs uppercase tracking-[0.3em] text-accent font-heading block mb-3">
-              /// GET STARTED
+              /// START YOUR RECOVERY
             </span>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
-              Schedule Your Appointment
+              Schedule Your Free MVA Consultation
             </h2>
             <p className="text-muted-foreground">
-              Take the first step towards recovery. Our team is ready to help.
+              Start recovery now — complete the form below or call us directly.
             </p>
+          </motion.div>
+
+          {/* Call Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <motion.a
+              href="tel:+1234567890"
+              className={`inline-flex items-center gap-3 px-8 py-4 border-2 border-primary text-primary font-heading uppercase tracking-wider text-sm rounded-lg hover:bg-primary hover:text-primary-foreground transition-all`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Phone className="w-5 h-5" />
+              Call Now: (123) 456-7890
+            </motion.a>
           </motion.div>
 
           <motion.div
@@ -151,7 +177,7 @@ export function ContactForm() {
                   Thank You!
                 </h3>
                 <p className="text-muted-foreground">
-                  We've received your message and will contact you shortly.
+                  We've received your message and will contact you shortly to schedule your free consultation.
                 </p>
               </motion.div>
             ) : (
@@ -185,27 +211,48 @@ export function ContactForm() {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className={getInputStyles()}
-                  />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="(555) 123-4567"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className={getInputStyles()}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Type of Injury
+                    </label>
+                    <select
+                      value={formData.injuryType}
+                      onChange={(e) => setFormData({ ...formData, injuryType: e.target.value })}
+                      className={getInputStyles()}
+                    >
+                      <option value="">Select injury type</option>
+                      <option value="whiplash">Whiplash / Neck Injury</option>
+                      <option value="back">Back / Spinal Injury</option>
+                      <option value="soft-tissue">Soft Tissue Injury</option>
+                      <option value="limb">Shoulder / Knee / Limb</option>
+                      <option value="nerve">Nerve Pain / Headaches</option>
+                      <option value="concussion">Concussion</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    How Can We Help? *
+                    Tell Us About Your Accident
                   </label>
                   <textarea
-                    required
                     rows={4}
-                    placeholder="Tell us about your condition or what services you're interested in..."
+                    placeholder="When did your accident occur? What symptoms are you experiencing?"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className={`${getInputStyles()} resize-none`}
@@ -219,7 +266,7 @@ export function ContactForm() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Send className="w-4 h-4" />
-                  Book Appointment
+                  Book Your Free Consultation
                 </motion.button>
 
                 <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">

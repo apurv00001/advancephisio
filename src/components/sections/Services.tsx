@@ -1,44 +1,84 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Activity, Brain, Bone, Stethoscope, Zap, HeartPulse } from 'lucide-react';
+import { Activity, Brain, Bone, FileCheck, HeartPulse, UserCheck, Shield, FileText, Phone, CreditCard } from 'lucide-react';
 
-const services = [
-  {
-    icon: Bone,
-    name: 'Orthopedic Therapy',
-    description: 'Comprehensive rehabilitation for joint injuries, fractures, and musculoskeletal conditions. We restore mobility and strength through targeted exercises.',
-  },
-  {
-    icon: Brain,
-    name: 'Neurological Rehab',
-    description: 'Specialized treatment for concussions, nerve damage, and brain injuries. Our protocols accelerate cognitive and motor recovery.',
-  },
+const injuries = [
   {
     icon: Activity,
-    name: 'Spinal Care',
-    description: 'Advanced spinal decompression and alignment therapy for herniated discs, sciatica, and chronic back pain relief.',
+    name: 'Whiplash & Neck Injuries',
+    description: 'Comprehensive treatment for whiplash, neck strain, and cervical spine injuries from motor vehicle accidents.',
+  },
+  {
+    icon: Bone,
+    name: 'Back & Spinal Disc Injuries',
+    description: 'Advanced care for herniated discs, sciatica, and lower back trauma caused by collision impact.',
   },
   {
     icon: HeartPulse,
-    name: 'Sports Medicine',
-    description: 'Return to peak performance with athletic injury treatment, performance optimization, and injury prevention programs.',
+    name: 'Soft Tissue Sprains & Strains',
+    description: 'Targeted therapy for muscle tears, ligament damage, and soft tissue trauma.',
   },
   {
-    icon: Zap,
-    name: 'Pain Management',
-    description: 'Multi-modal approaches including manual therapy, electrical stimulation, and therapeutic exercises for chronic pain conditions.',
+    icon: UserCheck,
+    name: 'Shoulder, Knee & Limb Injuries',
+    description: 'Rehabilitation for extremity injuries including joint damage and mobility restrictions.',
   },
   {
-    icon: Stethoscope,
-    name: 'Post-Surgery Recovery',
-    description: 'Customized rehabilitation programs following surgical procedures to ensure optimal healing and functional restoration.',
+    icon: Brain,
+    name: 'Nerve Pain & Headaches',
+    description: 'Treatment for post-traumatic headaches, nerve compression, and radiating pain.',
   },
+  {
+    icon: FileCheck,
+    name: 'Concussion & Post-Accident Symptoms',
+    description: 'Specialized protocols for concussion recovery and persistent post-accident symptoms.',
+  },
+];
+
+const recoveryProgram = [
+  {
+    icon: FileCheck,
+    title: 'Comprehensive Injury Assessment',
+    description: 'Thorough evaluation to understand your specific injuries and recovery needs.',
+  },
+  {
+    icon: UserCheck,
+    title: 'Personalized Treatment Plans',
+    description: 'Custom rehabilitation programs designed around your unique condition.',
+  },
+  {
+    icon: HeartPulse,
+    title: 'Manual Therapy & Exercises',
+    description: 'Hands-on treatment combined with therapeutic exercises for optimal recovery.',
+  },
+  {
+    icon: Activity,
+    title: 'Pain Management Strategies',
+    description: 'Effective techniques to reduce pain and improve daily function.',
+  },
+  {
+    icon: FileText,
+    title: 'Insurance Claim Documentation',
+    description: 'We help prepare all necessary documentation for your insurance claim.',
+  },
+  {
+    icon: Phone,
+    title: 'Specialist Referrals',
+    description: 'Access to our network of specialists when additional care is needed.',
+  },
+];
+
+const insuranceInfo = [
+  { icon: Shield, text: 'Most auto injuries covered by insurance' },
+  { icon: FileCheck, text: 'No referral required to begin physiotherapy' },
+  { icon: FileText, text: 'We help you prepare claim documentation' },
+  { icon: Phone, text: 'Direct support with insurance follow-up' },
 ];
 
 export function Services() {
   const { theme } = useTheme();
 
-  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance'].includes(theme);
+  const isDarkTheme = ['brutalist', 'futuristic', 'artdeco', 'cyberpunk', 'synthwave', 'darkelegance', 'executivenavy'].includes(theme);
 
   const getCardStyles = () => {
     switch (theme) {
@@ -60,10 +100,12 @@ export function Services() {
       case 'medicaltrust':
         return 'bg-card rounded-2xl shadow-sm hover:shadow-lg transition-shadow';
       case 'corporate':
+      case 'professionalblue':
         return 'bg-card rounded-lg shadow-sm hover:shadow-md border border-border transition-shadow';
       case 'synthwave':
         return 'border-2 border-primary/30 hover:border-primary bg-card/80';
       case 'darkelegance':
+      case 'executivenavy':
         return 'bg-card rounded-lg border border-border hover:border-accent/40 transition-colors';
       case 'healthvitality':
         return 'bg-card rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-primary/5';
@@ -77,6 +119,7 @@ export function Services() {
   return (
     <section id="services" className="py-24 bg-background">
       <div className="container mx-auto px-6">
+        {/* Common Injuries Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,20 +127,20 @@ export function Services() {
           className="text-center mb-16"
         >
           <span className="text-xs uppercase tracking-[0.3em] text-accent font-heading block mb-3">
-            /// OUR SERVICES
+            /// COMMON INJURIES WE TREAT
           </span>
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Comprehensive Treatment Options
+            MVA Injury Specialists
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            From injury recovery to performance enhancement, we offer a full spectrum of physical therapy services.
+            We specialize in treating all types of motor vehicle accident injuries with proven rehabilitation protocols.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {injuries.map((injury, index) => (
             <motion.div
-              key={service.name}
+              key={injury.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -105,19 +148,89 @@ export function Services() {
               className={`group cursor-pointer p-8 ${getCardStyles()}`}
             >
               <div className={`w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors ${isDarkTheme ? 'box-glow' : ''}`}>
-                <service.icon className="w-7 h-7 text-primary" />
+                <injury.icon className="w-7 h-7 text-primary" />
               </div>
 
               <h3 className="font-heading font-semibold text-xl text-foreground mb-3 group-hover:text-primary transition-colors">
-                {service.name}
+                {injury.name}
               </h3>
 
               <p className="text-muted-foreground text-sm leading-relaxed">
-                {service.description}
+                {injury.description}
               </p>
             </motion.div>
           ))}
         </div>
+
+        {/* Recovery Program Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-xs uppercase tracking-[0.3em] text-accent font-heading block mb-3">
+            /// OUR MVA RECOVERY PROGRAM
+          </span>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
+            Complete Recovery Support
+          </h2>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {recoveryProgram.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`group p-6 ${getCardStyles()}`}
+            >
+              <div className="flex items-start gap-4">
+                <div className={`w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 ${isDarkTheme ? 'box-glow' : ''}`}>
+                  <item.icon className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Insurance Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className={`p-8 md:p-12 ${getCardStyles()} border-2 border-primary/20`}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <CreditCard className="w-8 h-8 text-primary" />
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+              Insurance & Claim Assistance
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            {insuranceInfo.map((info, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <info.icon className="w-5 h-5 text-accent flex-shrink-0" />
+                <span className="text-muted-foreground">{info.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-muted-foreground text-sm italic">
+            Typical coverage includes Personal Injury Protection (PIP) or auto insurance benefits — ask us how it works.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -131,7 +244,7 @@ export function Services() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Book an Appointment
+            Schedule Your Free MVA Consultation
           </motion.a>
         </motion.div>
       </div>

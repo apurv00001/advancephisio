@@ -1,10 +1,9 @@
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
-import { Features } from '@/components/sections/Features';
-import { Analysis } from '@/components/sections/Analysis';
-import { Treatments } from '@/components/sections/Treatments';
-import { Video } from '@/components/sections/Video';
-import { FAQ } from '@/components/sections/FAQ';
+import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
+import { Services } from '@/components/sections/Services';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { ContactForm } from '@/components/sections/ContactForm';
 import { Footer } from '@/components/sections/Footer';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
@@ -15,11 +14,10 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Features />
-        <Analysis />
-        <Treatments />
-        <Video />
-        <FAQ />
+        <WhyChooseUs />
+        <Services />
+        <Testimonials />
+        <ContactForm />
       </main>
       <Footer />
     </div>
